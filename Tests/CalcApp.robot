@@ -1,5 +1,7 @@
 *** Settings ***
-Library  AppiumLibrary    
+Library  AppiumLibrary
+Resource  ../Resources/Common.robot
+Resource  ../Resources/PO/Calculator.robot
 
 
 
@@ -12,32 +14,14 @@ ${PACKAGE_NAME}  com.sec.android.app.popupcalculator
 ${Activity_NAME}  com.sec.android.app.popupcalculator.Calculator
 
 
-
-
-*** Keywords ***
-Open calculator
-  Open Application  ${REMOTE_URL}
-  ...  platformName=${PLATFORM_NAME}
-  #...  platformVersion=${PLATFORM_VERSION}
-  ...  deviceName=${DEVICE_NAME}
-  #...  automationName=UiAutomator2
-  #...  newCommandTimeout=20
-  ...  appActivity=${Activity_NAME}
-  ...  appPackage=${PACKAGE_NAME}
-
-
-
 *** Test Cases ***
-First Test cases
-  Open calculator
-  Click Element  id=calc_keypad_btn_09
-  Click Element  id=calc_keypad_btn_add
-  Click Element  id=calc_keypad_btn_09
-  Click Element  id=calc_keypad_btn_equal
-
-  Close Application
+Adding Two Numbers
   
-  #Click Element  xpath=//*[@id='digit_9']
-  #Click Element  xpath=//*[@id='calc_keypad_btn_add']
-  #Click Element  xpath=//*[@id='digit_4']
-  #Click Element  xpath=//*[@id='calc_keypad_btn_equal']
+  Common.Open Calculator
+
+  Calculator.Click Number  09
+  Calculator.Click Operator  add
+  Calculator.Click Number  05
+  Calculator.Click Operator  equal
+
+  Common.End Test
