@@ -1,5 +1,5 @@
 *** Settings ***
-Library  AppiumLibrary
+
 Resource  ../Resources/Common.robot
 Resource  ../Resources/PO/Calculator.robot
 
